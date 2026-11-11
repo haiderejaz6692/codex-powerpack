@@ -1,0 +1,5 @@
+interface:
+  display_name: "Starred Skill Router"
+  short_description: "Find and safely use skills from your GitHub library"
+  default_prompt: "Find the best matching workflow in my indexed GitHub skill library and use it safely for this task."
+

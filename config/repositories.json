@@ -1,0 +1,46 @@
+[
+  {"category":"AI","repo":"Nutlope/hallmark"},
+  {"category":"AI","repo":"onyx-dot-app/onyx"},
+  {"category":"AI","repo":"D4Vinci/Scrapling"},
+  {"category":"AI","repo":"ripienaar/free-for-dev"},
+  {"category":"AI","repo":"NousResearch/hermes-agent"},
+  {"category":"AI","repo":"net-merge/net-merge"},
+
+  {"category":"Writing and video","repo":"anthropics/skills"},
+  {"category":"Writing and video","repo":"OpenMontageInc/OpenMontage"},
+  {"category":"Writing and video","repo":"heygen-com/hyperframes"},
+  {"category":"Writing and video","repo":"blader/humanizer"},
+  {"category":"Writing and video","repo":"ayghri/i-have-adhd"},
+  {"category":"Writing and video","repo":"coreyhaines31/marketingskills"},
+
+  {"category":"Design and visual","repo":"nextlevelbuilder/ui-ux-pro-max-skill"},
+  {"category":"Design and visual","repo":"Leonxlnx/taste-skill"},
+  {"category":"Design and visual","repo":"tt-a1i/archify"},
+  {"category":"Design and visual","repo":"pbakaus/impeccable"},
+  {"category":"Design and visual","repo":"hugohe3/ppt-master"},
+  {"category":"Design and visual","repo":"cathrynlavery/diagram-design"},
+
+  {"category":"Big problems fewer tokens","repo":"garrytan/gstack"},
+  {"category":"Big problems fewer tokens","repo":"JuliusBrussee/caveman"},
+  {"category":"Big problems fewer tokens","repo":"thedotmack/claude-mem"},
+  {"category":"Big problems fewer tokens","repo":"headroomlabs-ai/headroom"},
+  {"category":"Big problems fewer tokens","repo":"gsd-build/get-shit-done"},
+  {"category":"Big problems fewer tokens","repo":"bmad-code-org/BMAD-METHOD"},
+
+  {"category":"Research and understanding","repo":"Graphify-Labs/graphify"},
+  {"category":"Research and understanding","repo":"Panniantong/Agent-Reach"},
+  {"category":"Research and understanding","repo":"Egonex-AI/Understand-Anything"},
+  {"category":"Research and understanding","repo":"mvanhorn/last30days-skill"},
+  {"category":"Research and understanding","repo":"career-ops-hq/career-ops"},
+  {"category":"Research and understanding","repo":"morluto/rea"},
+
+  {"category":"Code like a senior engineer","repo":"obra/superpowers"},
+  {"category":"Code like a senior engineer","repo":"mattpocock/skills"},
+  {"category":"Code like a senior engineer","repo":"multica-ai/andrej-karpathy-skills"},
+  {"category":"Code like a senior engineer","repo":"affaan-m/ECC"},
+  {"category":"Code like a senior engineer","repo":"DietrichGebert/ponytail"},
+  {"category":"Code like a senior engineer","repo":"addyosmani/agent-skills"},
+
+  {"category":"QA and SQA (optional)","repo":"petrkindlmann/qa-skills"}
+]
+

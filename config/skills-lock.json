@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-11-11",
+  "skills": [
+    {
+      "name": "humanizer",
+      "repository": "blader/humanizer",
+      "commit": "b48c832f0f809c1b5658edbb838c2521b72f2413",
+      "path": "."
+    },
+    {
+      "name": "diagram-design",
+      "repository": "cathrynlavery/diagram-design",
+      "commit": "f2496acbde9f45ccb55c24d4f75210c8a1355df8",
+      "path": "skills/diagram-design"
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "repository": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "commit": "6ae86f61f520d6ca229d2f40e070410638c908c5",
+      "path": ".claude/skills/ui-ux-pro-max"
+    },
+    {
+      "name": "karpathy-guidelines",
+      "repository": "multica-ai/andrej-karpathy-skills",
+      "commit": "2c606141936f1eeef17fa3043a72095b4765b9c2",
+      "path": "skills/karpathy-guidelines"
+    }
+  ]
+}
+
