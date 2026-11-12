@@ -12,6 +12,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 ROUTER = ROOT / "skills" / "skill-library-router"
+BUNDLED_SKILLS = ("skill-library-router", "benchmark-models", "readmex")
+PROFILE_SKILLS = ("hospitality-revenue-analyst", "token-saver")
 
 
 def load_json(relative_path: str):
@@ -42,14 +44,34 @@ def validate_repositories(entries, label: str) -> set[str]:
     return repositories
 
 
-def validate_skill() -> None:
-    manifest = ROUTER / "SKILL.md"
-    text = manifest.read_text(encoding="utf-8")
-    require(text.startswith("---\n"), "Router SKILL.md must start with YAML frontmatter")
-    require("\nname: skill-library-router\n" in text, "Router skill name is incorrect")
-    require("\ndescription:" in text, "Router skill description is missing")
+def validate_bundled_skills() -> int:
+    for name in BUNDLED_SKILLS:
+        manifest = ROOT / "skills" / name / "SKILL.md"
+        text = manifest.read_text(encoding="utf-8")
+        require(text.startswith("---\n"), f"{name} SKILL.md must start with YAML frontmatter")
+        require(f"\nname: {name}\n" in text, f"Bundled skill name is incorrect: {name}")
+        require("\ndescription:" in text, f"Bundled skill description is missing: {name}")
+
     require((ROUTER / "agents" / "openai.yaml").is_file(), "Router agents/openai.yaml is missing")
     require((ROUTER / "scripts" / "refresh_catalog.py").is_file(), "Catalog refresh script is missing")
+    require((ROOT / "skills" / "benchmark-models" / "references" / "evaluation-rubric.md").is_file(), "Benchmark rubric is missing")
+    require((ROOT / "skills" / "benchmark-models" / "THIRD_PARTY_NOTICES").is_file(), "Benchmark attribution is missing")
+    require((ROOT / "skills" / "readmex" / "bin" / "render-diagram.mjs").is_file(), "ReadmeX renderer is missing")
+    require((ROOT / "skills" / "readmex" / "THIRD_PARTY_NOTICES").is_file(), "ReadmeX attribution is missing")
+    return len(BUNDLED_SKILLS)
+
+
+def validate_profile_skills() -> int:
+    for name in PROFILE_SKILLS:
+        root = ROOT / "profiles" / "hospitality-revenue" / "skills" / name
+        manifest = root / "SKILL.md"
+        text = manifest.read_text(encoding="utf-8")
+        require(text.startswith("---\n"), f"{name} SKILL.md must start with YAML frontmatter")
+        require(f"\nname: {name}\n" in text, f"Profile skill name is incorrect: {name}")
+        require("\ndescription:" in text, f"Profile skill description is missing: {name}")
+        require((root / "agents" / "openai.yaml").is_file(), f"Profile UI metadata is missing: {name}")
+        require((root / "THIRD_PARTY_NOTICES").is_file(), f"Profile attribution is missing: {name}")
+    return len(PROFILE_SKILLS)
 
 
 def validate_catalog(configured_repositories: set[str]) -> int:
@@ -101,7 +123,8 @@ def validate_plugin() -> None:
 def main() -> int:
     try:
         validate_plugin()
-        validate_skill()
+        bundled_count = validate_bundled_skills()
+        profile_count = validate_profile_skills()
         configured = validate_repositories(load_json("config/repositories.json"), "config/repositories.json")
         packaged = validate_repositories(load_json("skills/skill-library-router/references/repositories.json"), "packaged repositories.json")
         require(configured == packaged, "Packaged and configured repository lists differ")
@@ -111,7 +134,11 @@ def main() -> int:
         print(f"VALIDATION FAILED: {error}", file=sys.stderr)
         return 1
 
-    print(f"VALIDATION PASSED: plugin, router, {len(configured)} repositories, {catalog_rows} catalog rows, {core_count} pinned core skills")
+    print(
+        f"VALIDATION PASSED: plugin, {bundled_count} bundled skills, {profile_count} optional profile skills, "
+        f"{len(configured)} repositories, "
+        f"{catalog_rows} catalog rows, {core_count} pinned core skills"
+    )
     return 0
 
 

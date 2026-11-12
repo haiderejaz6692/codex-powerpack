@@ -1,0 +1,15 @@
+Hospitality Revenue Analyst incorporates domain-routing ideas from:
+
+- msg2ai/hotel-team-skills, hotel-revenue-management, commit
+  a66a03a1a0714bc315d2ca49eec6c7998e54b4fb
+  https://github.com/msg2ai/hotel-team-skills
+  MIT License, Copyright (c) 2026 MSG2AI.
+
+- microsoft/skills-for-fabric, commit
+  e31422e7d1045ef3a0906df9ff5991f2338af010
+  https://github.com/microsoft/skills-for-fabric
+  MIT License, copyright 2026 Microsoft Corporation.
+
+The Powerpack implementation is a Codex-native, self-contained adaptation. It
+does not bundle external connectors, account credentials, MCP servers, or live
+hotel-system access from those projects.

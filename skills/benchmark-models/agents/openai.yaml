@@ -1,0 +1,4 @@
+interface:
+  display_name: "Benchmark Models"
+  short_description: "Choose or compare models for one prompt"
+  default_prompt: "Use $benchmark-models to recommend the best model and reasoning effort for this prompt."

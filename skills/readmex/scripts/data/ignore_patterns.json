@@ -1,0 +1,30 @@
+{
+  "ignore_dirs": [
+    ".git/",
+    "backup/",
+    ".readmex/",
+    "__pycache__/",
+    "node_modules/",
+    ".venv/",
+    "venv/",
+    ".pytest_cache/",
+    ".mypy_cache/",
+    ".tox/",
+    ".next/",
+    ".nuxt/",
+    ".cache/",
+    "dist/",
+    "build/",
+    "coverage/"
+  ],
+  "ignore_files": [
+    ".DS_Store",
+    "*.pyc",
+    "*.pyo",
+    ".env",
+    ".env.*",
+    "*.log",
+    "*.swp",
+    "*.swo"
+  ]
+}

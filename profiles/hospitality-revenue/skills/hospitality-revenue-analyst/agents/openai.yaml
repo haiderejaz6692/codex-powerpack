@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hospitality Revenue Analyst"
+  short_description: "Analyze hotel revenue, forecasts, and reporting"
+  default_prompt: "Use $hospitality-revenue-analyst to analyze this hotel's revenue performance."

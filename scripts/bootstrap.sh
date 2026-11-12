@@ -7,6 +7,12 @@ codex_home="${CODEX_HOME:-$HOME/.codex}"
 skills_root="$codex_home/skills"
 skip_core="${SKIP_CORE:-0}"
 repository_list="${POWERPACK_REPOSITORIES:-}"
+profile="${POWERPACK_PROFILE:-default}"
+
+if [[ "$profile" != "default" && "$profile" != "hospitality-revenue" ]]; then
+  printf 'Unknown POWERPACK_PROFILE: %s\n' "$profile" >&2
+  exit 1
+fi
 
 mkdir -p "$skills_root"
 
@@ -29,7 +35,15 @@ install_directory_safely() {
   printf 'INSTALLED %s -> %s\n' "$name" "$destination"
 }
 
-install_directory_safely "$repo_root/skills/skill-library-router" "skill-library-router"
+for bundled_skill in skill-library-router benchmark-models readmex; do
+  install_directory_safely "$repo_root/skills/$bundled_skill" "$bundled_skill"
+done
+
+if [[ "$profile" == "hospitality-revenue" ]]; then
+  for profile_skill in hospitality-revenue-analyst token-saver; do
+    install_directory_safely "$repo_root/profiles/hospitality-revenue/skills/$profile_skill" "$profile_skill"
+  done
+fi
 
 if [[ -n "$repository_list" ]]; then
   if [[ ! -f "$repository_list" ]]; then

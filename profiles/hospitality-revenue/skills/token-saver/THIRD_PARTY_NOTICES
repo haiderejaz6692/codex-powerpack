@@ -1,0 +1,10 @@
+Token Saver incorporates context-reduction ideas from:
+
+- headroomlabs-ai/headroom, commit
+  c05fbdddc873078dd97cb9ede841e75ef7ed0bef
+  https://github.com/headroomlabs-ai/headroom
+  Apache License 2.0, Copyright 2025 Headroom Contributors.
+
+The Powerpack implementation is a dependency-free Codex instruction workflow.
+It does not bundle Headroom code, install its runtime, wrap an agent, perform
+update checks or telemetry, or send source data to an external service.

@@ -2,6 +2,8 @@
 param(
     [string]$CodexHome,
     [string]$RepositoryList,
+    [ValidateSet('default', 'hospitality-revenue')]
+    [string]$Profile = 'default',
     [switch]$SkipCore
 )
 
@@ -35,8 +37,19 @@ function Install-DirectorySafely {
     Write-Output "INSTALLED $Name -> $Destination"
 }
 
-$RouterSource = Join-Path $RepoRoot 'skills\skill-library-router'
-Install-DirectorySafely -Source $RouterSource -Name 'skill-library-router'
+$BundledSkills = @('skill-library-router', 'benchmark-models', 'readmex')
+foreach ($BundledSkill in $BundledSkills) {
+    $BundledSource = Join-Path $RepoRoot "skills\$BundledSkill"
+    Install-DirectorySafely -Source $BundledSource -Name $BundledSkill
+}
+
+if ($Profile -eq 'hospitality-revenue') {
+    $ProfileSkills = @('hospitality-revenue-analyst', 'token-saver')
+    foreach ($ProfileSkill in $ProfileSkills) {
+        $ProfileSource = Join-Path $RepoRoot "profiles\hospitality-revenue\skills\$ProfileSkill"
+        Install-DirectorySafely -Source $ProfileSource -Name $ProfileSkill
+    }
+}
 
 if ($RepositoryList) {
     $ResolvedRepositoryList = (Resolve-Path -LiteralPath $RepositoryList).Path

@@ -9,7 +9,12 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    name: Validate (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -17,13 +22,19 @@ jobs:
           python-version: "3.12"
       - name: Validate package metadata and catalog
         run: python scripts/validate_package.py
+      - name: Test bundled skills and installers
+        run: python -m unittest discover -s tests -v
       - name: Check Bash installer syntax
+        if: runner.os == 'Linux'
         run: bash -n scripts/bootstrap.sh
-      - name: Test Bash router installation
+      - name: Test Bash bundled-skill installation
+        if: runner.os == 'Linux'
         env:
           SKIP_CORE: "1"
           CODEX_HOME: ${{ runner.temp }}/codex-powerpack-test
         run: |
           bash scripts/bootstrap.sh
           test -f "$CODEX_HOME/skills/skill-library-router/SKILL.md"
+          test -f "$CODEX_HOME/skills/benchmark-models/SKILL.md"
+          test -f "$CODEX_HOME/skills/readmex/renderers/architecture/render-architecture.mjs"
 
