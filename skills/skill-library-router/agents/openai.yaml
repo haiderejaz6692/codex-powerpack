@@ -1,0 +1,5 @@
+interface:
+  display_name: "Skill Library Router"
+  short_description: "Find and safely use cataloged Agent Skills"
+  default_prompt: "Find the best matching workflow in the indexed Agent Skills library and use it safely for this task."
+

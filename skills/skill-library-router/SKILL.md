@@ -1,9 +1,10 @@
 ---
-name: starred-skill-router
-description: Find and safely apply a specialized Agent Skill from haiderejaz6692's selected GitHub repositories when an installed skill does not already cover the task, or when the user asks to search, refresh, or install their starred skills.
+name: skill-library-router
+description: Find and safely apply a specialized Agent Skill from an indexed GitHub repository catalog when installed skills do not cover the task, or when the user asks to search, refresh, or install cataloged skills.
+license: MIT
 ---
 
-# Starred Skill Router
+# Skill Library Router
 
 Use the local catalog to locate a specialized workflow without loading every indexed skill into Codex at once.
 
@@ -20,5 +21,5 @@ If a selected skill was designed only for another host, adapt useful domain guid
 
 ## Maintain the catalog
 
-Run `scripts/refresh_catalog.py` when the user asks to refresh the library or when the catalog is missing. The script reads the fixed repository list in `references/repositories.json` through the authenticated GitHub CLI and records skill paths only. It does not install or execute repository code.
+Run `scripts/refresh_catalog.py` when the user asks to refresh the library or when the catalog is missing. By default, the script reads `references/repositories.json`. Use `--repositories PATH` for another JSON list, or `--github-user USERNAME` to catalog a user's public and authorized starred repositories. It records metadata and paths only; it does not install or execute repository code.
 

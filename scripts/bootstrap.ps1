@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
     [string]$CodexHome,
+    [string]$RepositoryList,
     [switch]$SkipCore
 )
 
@@ -34,8 +35,19 @@ function Install-DirectorySafely {
     Write-Output "INSTALLED $Name -> $Destination"
 }
 
-$RouterSource = Join-Path $RepoRoot 'skills\starred-skill-router'
-Install-DirectorySafely -Source $RouterSource -Name 'starred-skill-router'
+$RouterSource = Join-Path $RepoRoot 'skills\skill-library-router'
+Install-DirectorySafely -Source $RouterSource -Name 'skill-library-router'
+
+if ($RepositoryList) {
+    $ResolvedRepositoryList = (Resolve-Path -LiteralPath $RepositoryList).Path
+    $RepositoryData = Get-Content -LiteralPath $ResolvedRepositoryList -Raw | ConvertFrom-Json
+    if (-not $RepositoryData -or @($RepositoryData | Where-Object { -not $_.repo -or -not $_.category }).Count -gt 0) {
+        throw 'RepositoryList must be a non-empty JSON array whose entries contain repo and category.'
+    }
+    $InstalledRepositoryList = Join-Path $SkillsRoot 'skill-library-router\references\repositories.json'
+    Copy-Item -LiteralPath $ResolvedRepositoryList -Destination $InstalledRepositoryList -Force
+    Write-Output "CONFIGURED skill-library-router from $ResolvedRepositoryList"
+}
 
 if (-not $SkipCore) {
     $Manifest = Join-Path $RepoRoot 'config\core-skills.tsv'

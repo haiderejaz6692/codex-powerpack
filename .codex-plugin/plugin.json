@@ -1,0 +1,12 @@
+{
+  "name": "codex-powerpack",
+  "version": "1.0.0",
+  "description": "Search and safely apply specialized Agent Skills from a configurable GitHub repository catalog.",
+  "author": {
+    "name": "Haider Ejaz"
+  },
+  "repository": "https://github.com/haiderejaz6692/codex-powerpack",
+  "license": "MIT",
+  "skills": "./skills/"
+}
+

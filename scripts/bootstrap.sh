@@ -6,6 +6,7 @@ repo_root="$(cd "$script_dir/.." && pwd)"
 codex_home="${CODEX_HOME:-$HOME/.codex}"
 skills_root="$codex_home/skills"
 skip_core="${SKIP_CORE:-0}"
+repository_list="${POWERPACK_REPOSITORIES:-}"
 
 mkdir -p "$skills_root"
 
@@ -28,7 +29,16 @@ install_directory_safely() {
   printf 'INSTALLED %s -> %s\n' "$name" "$destination"
 }
 
-install_directory_safely "$repo_root/skills/starred-skill-router" "starred-skill-router"
+install_directory_safely "$repo_root/skills/skill-library-router" "skill-library-router"
+
+if [[ -n "$repository_list" ]]; then
+  if [[ ! -f "$repository_list" ]]; then
+    printf 'Repository list does not exist: %s\n' "$repository_list" >&2
+    exit 1
+  fi
+  cp "$repository_list" "$skills_root/skill-library-router/references/repositories.json"
+  printf 'CONFIGURED skill-library-router from %s\n' "$repository_list"
+fi
 
 if [[ "$skip_core" != "1" ]]; then
   for command_name in curl unzip; do

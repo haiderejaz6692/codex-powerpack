@@ -1,0 +1,33 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "codex-powerpack",
+  "version": "1.0.0",
+  "description": "Search and safely apply specialized Agent Skills from a configurable GitHub repository catalog.",
+  "author": {
+    "name": "Haider Ejaz",
+    "url": "https://github.com/haiderejaz6692"
+  },
+  "homepage": "https://github.com/haiderejaz6692/codex-powerpack",
+  "repository": "https://github.com/haiderejaz6692/codex-powerpack",
+  "license": "MIT",
+  "keywords": ["codex", "agent-skills", "skill-router", "github", "developer-tools"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Codex Powerpack",
+        "shortDescription": "Route tasks to a curated Agent Skills library",
+        "longDescription": "Search a configurable GitHub catalog and load only the specialized workflow needed for the current task.",
+        "developerName": "Haider Ejaz",
+        "category": "Productivity",
+        "capabilities": ["Read"],
+        "websiteURL": "https://github.com/haiderejaz6692/codex-powerpack",
+        "defaultPrompt": [
+          "Find the best matching skill in the catalog for this task.",
+          "Refresh my Agent Skills catalog.",
+          "Find a safe testing workflow for this project."
+        ]
+      }
+    }
+  }
+}
+

@@ -1,83 +1,149 @@
 # Codex Powerpack
 
-A portable, safe Codex skills setup for `haiderejaz6692`.
+A portable Codex plugin and direct installer for a large, searchable Agent Skills library.
 
-Instead of globally installing hundreds of overlapping skills, this repository installs a small trusted core and a router that searches a catalog of specialist skills only when a task needs one.
+Codex Powerpack keeps discovery efficient: it installs one lightweight router, indexes specialist skills, and loads only the workflow needed for the current task. It does not globally install thousands of overlapping skill manifests.
 
-## What it installs
+## Fastest installation: GitHub CLI
 
-- `starred-skill-router` — searches the indexed GitHub skill library on demand.
-- `humanizer` — rewrites AI-sounding prose naturally.
-- `diagram-design` — creates architecture and software diagrams.
-- `ui-ux-pro-max` — UI/UX design, implementation, review, and accessibility guidance.
-- `karpathy-guidelines` — surgical coding and review discipline.
+With a recent GitHub CLI that provides `gh skill`:
 
-The catalog covers 36 selected repositories grouped into six GitHub lists, plus the optional `petrkindlmann/qa-skills` testing library. Applications and reference repositories remain catalog entries; they are not forced into Codex as skills.
+```bash
+gh auth login
+gh skill install haiderejaz6692/codex-powerpack skill-library-router --agent codex --scope user
+```
 
-## Install on Windows
+Start a new Codex chat after installation. GitHub CLI records the source, so future releases can be picked up with:
+
+```bash
+gh skill update --all
+```
+
+## Plugin marketplace installation
+
+On Codex versions that support plugin marketplace commands, add this repository as a marketplace:
+
+Add this repository as a Codex plugin marketplace:
+
+```bash
+codex plugin marketplace add haiderejaz6692/codex-powerpack
+```
+
+Restart the ChatGPT desktop app, open the Plugins Directory, select **Codex Powerpack**, and install it. The plugin packages `skill-library-router` and its curated catalog in the standard `skills/` layout. If the local Codex CLI does not recognize `codex plugin`, use the GitHub CLI or direct installation route instead.
+
+## Direct installation
+
+Use this route when plugin marketplaces are unavailable or when you also want the four optional core skills.
+
+### Windows
 
 ```powershell
-gh auth login
-gh repo clone haiderejaz6692/codex-powerpack
+git clone https://github.com/haiderejaz6692/codex-powerpack.git
 cd codex-powerpack
 powershell -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1
 ```
 
 PowerShell 7 users can replace `powershell` with `pwsh`.
 
-## Install on macOS or Linux
+### macOS or Linux
 
 ```bash
-gh auth login
-gh repo clone haiderejaz6692/codex-powerpack
+git clone https://github.com/haiderejaz6692/codex-powerpack.git
 cd codex-powerpack
 bash ./scripts/bootstrap.sh
 ```
 
-Open a new Codex chat after installation so newly installed skills are discoverable.
+The direct installer adds:
 
-## Safe behavior
+- `skill-library-router` — searches the indexed library on demand.
+- `humanizer` — improves AI-sounding prose.
+- `diagram-design` — creates architecture and software diagrams.
+- `ui-ux-pro-max` — supports UI/UX design, review, and implementation.
+- `karpathy-guidelines` — encourages focused, verifiable code changes.
 
-- Existing skill directories are never overwritten.
-- Upstream skills are downloaded at commits pinned in `config/core-skills.tsv`.
-- Downloaded skills are copied but their scripts are not executed.
-- Every downloaded directory must contain `SKILL.md`.
-- Temporary files are removed after installation.
-- Specialist repositories are indexed, not blindly installed.
+Open a new Codex chat after direct installation so the new skills are discoverable.
 
-## Refresh the catalog
+## Use your own repository list
 
-After installation:
+The included catalog is a useful default, not a requirement. Create a JSON file containing any public or GitHub-authorized repositories:
+
+```json
+[
+  {"category": "Testing", "repo": "owner/testing-skills"},
+  {"category": "Design", "repo": "owner/design-skills"}
+]
+```
+
+Install the router with that list on Windows:
 
 ```powershell
-python "$HOME\.codex\skills\starred-skill-router\scripts\refresh_catalog.py"
+powershell -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1 -RepositoryList .\my-repositories.json
 ```
 
 On macOS or Linux:
 
 ```bash
-python3 "$HOME/.codex/skills/starred-skill-router/scripts/refresh_catalog.py"
+POWERPACK_REPOSITORIES="$PWD/my-repositories.json" bash ./scripts/bootstrap.sh
 ```
 
-The refresh requires an authenticated GitHub CLI. It reads repository trees and skill manifests but does not install or execute repository code.
+You can also build a catalog directly from any GitHub user's public stars:
 
-## Update pinned core versions
+```bash
+python3 skills/skill-library-router/scripts/refresh_catalog.py --github-user USERNAME
+```
 
-Review upstream changes first, then update the commit hashes in `config/core-skills.tsv`. Running the bootstrap again skips already installed destinations, protecting local modifications. Rename or remove a destination deliberately before installing a new pinned version.
+To combine stars with a JSON list, add `--merge-starred`.
+
+## Refresh the installed catalog
+
+Windows:
+
+```powershell
+python "$HOME\.codex\skills\skill-library-router\scripts\refresh_catalog.py"
+```
+
+macOS or Linux:
+
+```bash
+python3 "$HOME/.codex/skills/skill-library-router/scripts/refresh_catalog.py"
+```
+
+Refresh requires an authenticated GitHub CLI (`gh auth login`). It reads repository metadata and trees; it does not install or execute repository code.
+
+## Safe behavior
+
+- Existing skill directories are never overwritten.
+- Optional core skills are downloaded at commits pinned in `config/skills-lock.json`.
+- Downloaded skill scripts are copied but never executed by the installer.
+- Every installed directory must contain `SKILL.md`.
+- Specialist repositories are indexed, not blindly installed.
+- Private repositories work only when the local GitHub CLI account can access them.
+
+See [SECURITY.md](SECURITY.md) before changing pinned versions or adding an unfamiliar repository.
+
+Maintainers can validate the complete package locally with:
+
+```bash
+python scripts/validate_package.py
+```
 
 ## Repository layout
 
 ```text
 codex-powerpack/
+├── plugin.json
+├── .codex-plugin/plugin.json
+├── .agents/plugins/marketplace.json
 ├── config/
 │   ├── core-skills.tsv
 │   ├── repositories.json
+│   ├── repositories.example.json
 │   └── skills-lock.json
 ├── scripts/
 │   ├── bootstrap.ps1
 │   └── bootstrap.sh
 └── skills/
-    └── starred-skill-router/
+    └── skill-library-router/
         ├── SKILL.md
         ├── agents/openai.yaml
         ├── references/catalog.tsv
@@ -87,5 +153,5 @@ codex-powerpack/
 
 ## Upstream licenses
 
-This repository does not vendor the four upstream core skills. The bootstrap downloads them from their original repositories, where their own licenses and terms apply. The generated catalog contains metadata and links only.
+The optional core skills are not vendored. The direct installer downloads them from their original repositories, where their own licenses and terms apply. The generated catalog contains repository metadata and links only.
 

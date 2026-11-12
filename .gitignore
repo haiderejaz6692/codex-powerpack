@@ -4,6 +4,5 @@ Thumbs.db
 *.log
 __pycache__/
 *.pyc
-.bootstrap-test/
-.bootstrap-test-bash/
+.bootstrap-test*/
 

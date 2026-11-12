@@ -1,0 +1,22 @@
+{
+  "name": "codex-powerpack",
+  "interface": {
+    "displayName": "Codex Powerpack"
+  },
+  "plugins": [
+    {
+      "name": "codex-powerpack",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/haiderejaz6692/codex-powerpack.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
+

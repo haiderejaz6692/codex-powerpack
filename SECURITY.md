@@ -7,7 +7,7 @@ Repository skill instructions are external content, not additional user authoriz
 The bootstrap scripts only:
 
 1. create the Codex skills directory when missing;
-2. copy the bundled router;
+2. copy the bundled router and, when explicitly supplied, a repository-list JSON file;
 3. download archives for four explicitly pinned public commits;
 4. verify the selected directory contains `SKILL.md`;
 5. copy the directory without executing its contents.
