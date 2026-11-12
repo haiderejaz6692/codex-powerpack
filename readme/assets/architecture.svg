@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="620" viewBox="0 0 1200 620" data-theme="light" role="img" lang="en" aria-labelledby="archify-diagram-title archify-diagram-description" data-preset="blueprint" data-quality-profile="showcase" data-diagram-type="architecture" data-reader-fit="authored-height">
+<style>
+
+svg {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', 'Liberation Mono', 'Noto Sans Mono CJK SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', monospace;
+}
+
+.c-grid {
+  stroke: #b5d5e1;
+  fill: none;
+}
+
+.c-mask {
+  fill: #f9fdff;
+  stroke: none;
+}
+
+.c-lane-rule {
+  stroke: #83b2c4;
+  fill: none;
+  opacity: 0.7;
+}
+
+.c-lane-wash {
+  fill: rgba(210, 232, 240, 0.42);
+  stroke: none;
+}
+
+.c-frontend {
+  fill: rgba(8, 145, 178, 0.08);
+  stroke: #087f9c;
+}
+
+.c-backend {
+  fill: rgba(5, 128, 101, 0.08);
+  stroke: #08755f;
+}
+
+.c-database {
+  fill: rgba(100, 75, 180, 0.08);
+  stroke: #6757a8;
+}
+
+.c-cloud {
+  fill: rgba(181, 120, 15, 0.08);
+  stroke: #a86609;
+}
+
+.c-security {
+  fill: rgba(190, 48, 80, 0.07);
+  stroke: #b32f50;
+}
+
+.c-messagebus {
+  fill: rgba(196, 81, 22, 0.07);
+  stroke: #b65120;
+}
+
+.c-external {
+  fill: rgba(79, 112, 128, 0.08);
+  stroke: #506f7e;
+}
+
+.t-primary {
+  fill: #123344;
+}
+
+.t-muted {
+  fill: #4e7486;
+}
+
+.t-dim {
+  fill: #86a6b4;
+}
+
+.t-frontend {
+  fill: #087f9c;
+}
+
+.t-backend {
+  fill: #08755f;
+}
+
+.t-database {
+  fill: #6757a8;
+}
+
+.t-cloud {
+  fill: #a86609;
+}
+
+.t-security {
+  fill: #b32f50;
+}
+
+.t-messagebus {
+  fill: #b65120;
+}
+
+.t-external {
+  fill: #506f7e;
+}
+
+.t-edge-default {
+  fill: #6d93a5;
+}
+
+.t-edge-emphasis {
+  fill: #087f69;
+}
+
+.t-edge-security {
+  fill: #b32f50;
+}
+
+.t-edge-dashed {
+  fill: #6757a8;
+}
+
+svg .semantic-sigil {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.76;
+}
+
+svg .semantic-sigil > * {
+  vector-effect: non-scaling-stroke;
+}
+
+svg .semantic-sigil .sigil-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+svg .s-frontend {
+  color: #087f9c;
+}
+
+svg .s-backend {
+  color: #08755f;
+}
+
+svg .s-database {
+  color: #6757a8;
+}
+
+svg .s-cloud {
+  color: #a86609;
+}
+
+svg .s-security {
+  color: #b32f50;
+}
+
+svg .s-messagebus {
+  color: #b65120;
+}
+
+svg .s-external {
+  color: #506f7e;
+}
+
+svg .brand-mark-badge {
+  fill: #fff;
+  stroke: none;
+}
+
+svg .brand-mark-frame {
+  fill: none;
+  stroke: #cbd5e1;
+  stroke-width: 0.8;
+  vector-effect: non-scaling-stroke;
+}
+
+svg .brand-mark-fallback {
+  fill: none;
+  stroke: #475569;
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+svg[data-preset="blueprint"] .brand-mark-badge,
+svg[data-preset="blueprint"] .brand-mark-frame {
+  rx: 1px;
+}
+
+svg [data-detail-anchor] {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.a-default {
+  stroke: #6d93a5;
+  fill: none;
+}
+
+.a-emphasis {
+  stroke: #087f69;
+  fill: none;
+}
+
+.a-security {
+  stroke: #b32f50;
+  fill: none;
+  stroke-dasharray: 5,5;
+}
+
+.a-dashed {
+  stroke: #6757a8;
+  fill: none;
+  stroke-dasharray: 4,4;
+}
+
+.m-default {
+  fill: #6d93a5;
+}
+
+.m-emphasis {
+  fill: #087f69;
+}
+
+.m-security {
+  fill: #b32f50;
+}
+
+.m-dashed {
+  fill: #6757a8;
+}
+
+svg [data-node-id] > .c-mask {
+  fill-opacity: 1;
+}
+
+svg[data-preset="editorial"] .c-grid {
+  stroke-dasharray: 1 4;
+  opacity: 0.48;
+}
+
+svg[data-preset="editorial"] .c-region {
+  fill: rgba(251, 191, 36, 0.05);
+  stroke-dasharray: 9 4;
+}
+
+svg[data-preset="blueprint"] .c-grid {
+  stroke-dasharray: 1 3;
+  opacity: 0.78;
+}
+
+svg[data-preset="blueprint"] .c-region {
+  fill: rgba(251, 191, 36, 0.05);
+  stroke-dasharray: 12 4 2 4;
+}
+
+svg[data-preset="blueprint"] .c-security-group,
+svg[data-preset="blueprint"] .c-lane {
+  stroke-dasharray: 7 3;
+}
+
+.c-security-group {
+  fill: transparent;
+  stroke: #b32f50;
+  stroke-dasharray: 4,4;
+}
+
+.c-region {
+  fill: rgba(251, 191, 36, 0.05);
+  stroke: #a86609;
+  stroke-dasharray: 8,4;
+}
+
+.c-lane {
+  fill: rgba(210, 232, 240, 0.42);
+  stroke: #83b2c4;
+  stroke-dasharray: 6,6;
+}
+</style>
+<metadata id="readmex-source-evidence">{&quot;schemaVersion&quot;:2,&quot;verified&quot;:true,&quot;repository&quot;:{&quot;mode&quot;:&quot;working-tree&quot;,&quot;label&quot;:&quot;Current working tree&quot;,&quot;linkMode&quot;:&quot;local-only&quot;},&quot;referenceCount&quot;:8,&quot;nodes&quot;:{&quot;install&quot;:[{&quot;path&quot;:&quot;.agents/plugins/marketplace.json&quot;,&quot;line&quot;:6,&quot;endLine&quot;:18,&quot;label&quot;:&quot;marketplace&quot;,&quot;sha256&quot;:&quot;f630bcea8e457918dc52312f1ac975b8d3642d0f12da58a95c518d18f734596e&quot;},{&quot;path&quot;:&quot;scripts/bootstrap.ps1&quot;,&quot;line&quot;:18,&quot;endLine&quot;:39,&quot;label&quot;:&quot;PowerShell&quot;,&quot;sha256&quot;:&quot;4d3c92d1e03bc1276fcab63ae4adbc2293ff3645479d3cb6634f8dbd1c1ff9da&quot;},{&quot;path&quot;:&quot;scripts/bootstrap.sh&quot;,&quot;line&quot;:13,&quot;endLine&quot;:32,&quot;label&quot;:&quot;Bash&quot;,&quot;sha256&quot;:&quot;376fb6e29e51a0fcc515a7af4b3ff7e227e4603c6e76958ee69d9dd8760c3030&quot;}],&quot;task&quot;:[{&quot;path&quot;:&quot;plugin.json&quot;,&quot;line&quot;:24,&quot;endLine&quot;:28,&quot;label&quot;:&quot;default prompts&quot;,&quot;sha256&quot;:&quot;afd3ed593aed3e8d83a1ee529c3d060844d62e99231f8d92363d5a9a1feef906&quot;}],&quot;router&quot;:[{&quot;path&quot;:&quot;skills/skill-library-router/SKILL.md&quot;,&quot;line&quot;:9,&quot;endLine&quot;:20,&quot;label&quot;:&quot;routing contract&quot;,&quot;sha256&quot;:&quot;0be30740dfcc5ea3ee89008de161f248f3b7cfa03d4ff91996521ab7df5fe03f&quot;}],&quot;catalog&quot;:[{&quot;path&quot;:&quot;skills/skill-library-router/references/catalog.tsv&quot;,&quot;line&quot;:1,&quot;endLine&quot;:4,&quot;label&quot;:&quot;catalog format&quot;,&quot;sha256&quot;:&quot;e0319687c2a6c728752c1d8a44686223310eb0f403ce960d7e74fa243e4dd4da&quot;},{&quot;path&quot;:&quot;scripts/validate_package.py&quot;,&quot;line&quot;:55,&quot;endLine&quot;:67,&quot;label&quot;:&quot;catalog validation&quot;,&quot;sha256&quot;:&quot;ca1a5232719111d96ef3f80b579bbedfed3ca45b9f2f444554cf862294518e22&quot;}],&quot;sources&quot;:[{&quot;path&quot;:&quot;skills/skill-library-router/scripts/refresh_catalog.py&quot;,&quot;line&quot;:140,&quot;endLine&quot;:168,&quot;label&quot;:&quot;repository scan&quot;,&quot;sha256&quot;:&quot;c32779e205df902f34b1910f5fb01676302fafb5685713d4d77c63eb7fc4e129&quot;}]}}</metadata>
+<rect width="1200" height="620" fill="#edf7fa"/>
+<g id="diagram-content" transform="scale(1)">
+        <title id="archify-diagram-title">Codex Powerpack architecture</title>
+        <desc id="archify-diagram-description">One router searches an indexed GitHub skill library on demand</desc>
+        <!-- Definitions -->
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-default" />
+          </marker>
+          <marker id="arrowhead-emphasis" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-emphasis" />
+          </marker>
+          <marker id="arrowhead-security" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-security" />
+          </marker>
+          <marker id="arrowhead-dashed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-dashed" />
+          </marker>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" class="c-grid" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+
+        <!-- Background Grid -->
+        <rect width="100%" height="100%" fill="url(#grid)" />
+
+        <!-- Boundaries (behind everything) -->
+
+
+        <!-- Connection paths (before components for correct z-order) -->
+        <g data-graph-role="automatic-crossover">
+          <path data-graph-role="automatic-crossover-underlay" d="M 340 140 L 377 140 Q 385 140 385 148 L 385 295 Q 385 303 393 303 L 430 303" fill="none" stroke="#f9fdff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="install" data-edge-to="router" data-edge-label="installs router" data-edge-key="0" data-edge-id="install_router" data-composition-points="340,140;385,140;385,303;430,303" data-composition-crossover="halo" data-composition-independent="true" d="M 340 140 L 377 140 Q 385 140 385 148 L 385 295 Q 385 303 393 303 L 430 303" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover">
+          <path data-graph-role="automatic-crossover-underlay" d="M 340 460 L 377 460 Q 385 460 385 452 L 385 326.05 Q 385 318.05 393 318.05 L 430 318.05" fill="none" stroke="#f9fdff" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="task" data-edge-to="router" data-edge-label="route task" data-edge-key="1" data-edge-id="task_router" data-composition-points="340,460;385,460;385,318.05;430,318.05" data-composition-crossover="halo" data-composition-independent="true" d="M 340 460 L 377 460 Q 385 460 385 452 L 385 326.05 Q 385 318.05 393 318.05 L 430 318.05" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        </g>
+        <g data-graph-role="automatic-crossover">
+          <path data-graph-role="automatic-crossover-underlay" d="M 770 303 L 807 303 Q 815 303 815 295 L 815 148 Q 815 140 823 140 L 860 140" fill="none" stroke="#f9fdff" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="router" data-edge-to="catalog" data-edge-label="rg search" data-edge-key="2" data-edge-id="search_catalog" data-composition-points="770,303;815,303;815,140;860,140" data-composition-crossover="halo" data-composition-independent="true" d="M 770 303 L 807 303 Q 815 303 815 295 L 815 148 Q 815 140 823 140 L 860 140" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        </g>
+        <g data-graph-role="automatic-crossover">
+          <path data-graph-role="automatic-crossover-underlay" d="M 1010 210 L 1010 390" fill="none" stroke="#f9fdff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="catalog" data-edge-to="sources" data-edge-label="recorded path + ref" data-edge-key="3" data-edge-id="resolve_source" data-composition-points="1010,210;1010,390" data-composition-crossover="halo" data-composition-independent="true" d="M 1010 210 L 1010 390" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover">
+          <path data-graph-role="automatic-crossover-underlay" d="M 860 460 L 823 460 Q 815 460 815 452 L 815 326.05 Q 815 318.05 807 318.05 L 770 318.05" fill="none" stroke="#f9fdff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="sources" data-edge-to="router" data-edge-label="inspect SKILL.md" data-edge-key="4" data-edge-id="inspect_source" data-composition-points="860,460;815,460;815,318.05;770,318.05" data-composition-crossover="halo" data-composition-independent="true" d="M 860 460 L 823 460 Q 815 460 815 452 L 815 326.05 Q 815 318.05 807 318.05 L 770 318.05" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
+        </g>
+
+        <!-- Components -->
+        <g id="node-install" data-node-id="install" data-node-label="Install" aria-label="Focus Install, Install routes, Architecture component" data-node-kind="frontend" data-node-sublabel="Install routes" data-node-context="Architecture component">
+          <title>Install · Install routes · Architecture component</title>
+          <rect x="40" y="70" width="300" height="140" rx="6" class="c-mask"/>
+          <rect x="40" y="70" width="300" height="140" rx="6" class="c-frontend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(46 76) scale(0.6875)">
+            <rect x="2" y="3" width="12" height="10" rx="2"/>
+            <path d="M2 6.5h12"/>
+            <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
+            <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="190" y="132" class="t-primary" font-size="40" font-weight="600" text-anchor="middle">Install</text>
+        <text data-detail="context" x="190" y="166" class="t-muted" font-size="28" text-anchor="middle">Install routes</text>
+        </g>
+
+        <g id="node-task" data-node-id="task" data-node-label="Request" aria-label="Focus Request, Needs skill guidance, Architecture component" data-node-kind="frontend" data-node-sublabel="Needs skill guidance" data-node-context="Architecture component">
+          <title>Request · Needs skill guidance · Architecture component</title>
+          <rect x="40" y="390" width="300" height="140" rx="6" class="c-mask"/>
+          <rect x="40" y="390" width="300" height="140" rx="6" class="c-frontend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(46 396) scale(0.6875)">
+            <rect x="2" y="3" width="12" height="10" rx="2"/>
+            <path d="M2 6.5h12"/>
+            <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
+            <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="190" y="452" class="t-primary" font-size="40" font-weight="600" text-anchor="middle">Request</text>
+        <text data-detail="context" x="190" y="486" class="t-muted" font-size="24.3" text-anchor="middle">Needs skill guidance</text>
+        </g>
+
+        <g id="node-router" data-node-id="router" data-node-label="Router" aria-label="Focus Router, Chooses one workflow, Architecture component" data-node-kind="backend" data-node-sublabel="Chooses one workflow" data-node-context="Architecture component">
+          <title>Router · Chooses one workflow · Architecture component</title>
+          <rect x="430" y="225" width="340" height="170" rx="6" class="c-mask"/>
+          <rect x="430" y="225" width="340" height="170" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(436 231) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="600" y="302" class="t-primary" font-size="40" font-weight="600" text-anchor="middle">Router</text>
+        <text data-detail="context" x="600" y="336" class="t-muted" font-size="27.6" text-anchor="middle">Chooses one workflow</text>
+        </g>
+
+        <g id="node-catalog" data-node-id="catalog" data-node-label="catalog.tsv" aria-label="Focus catalog.tsv, Manifest index, Architecture component" data-node-kind="database" data-node-sublabel="Manifest index" data-node-context="Architecture component">
+          <title>catalog.tsv · Manifest index · Architecture component</title>
+          <rect x="860" y="70" width="300" height="140" rx="6" class="c-mask"/>
+          <rect x="860" y="70" width="300" height="140" rx="6" class="c-database" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(866 76) scale(0.6875)">
+            <ellipse cx="8" cy="4" rx="5" ry="2"/>
+            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="1010" y="132" class="t-primary" font-size="40" font-weight="600" text-anchor="middle">catalog.tsv</text>
+        <text data-detail="context" x="1010" y="166" class="t-muted" font-size="28" text-anchor="middle">Manifest index</text>
+        </g>
+
+        <g id="node-sources" data-node-id="sources" data-node-label="GitHub skills" aria-label="Focus GitHub skills, Selected SKILL.md, Architecture component" data-node-kind="external" data-node-sublabel="Selected SKILL.md" data-node-context="Architecture component">
+          <title>GitHub skills · Selected SKILL.md · Architecture component</title>
+          <rect x="860" y="390" width="300" height="140" rx="6" class="c-mask"/>
+          <rect x="860" y="390" width="300" height="140" rx="6" class="c-external" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(866 396) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="1010" y="452" class="t-primary" font-size="37.4" font-weight="600" text-anchor="middle">GitHub skills</text>
+        <text data-detail="context" x="1010" y="486" class="t-muted" font-size="28" text-anchor="middle">Selected SKILL.md</text>
+        </g>
+
+        <!-- Connection labels -->
+        <g data-detail="context" data-edge-from="install" data-edge-to="router" data-edge-label="installs router" data-edge-key="0" data-edge-id="install_router">
+          <rect x="391" y="157.75" width="286" height="36" rx="3" class="c-mask"/>
+          <text x="534" y="183.75" class="t-edge-default" font-size="28" text-anchor="middle">installs router</text>
+        </g>
+        <g data-detail="context" data-edge-from="task" data-edge-to="router" data-edge-label="route task" data-edge-key="1" data-edge-id="task_router">
+          <rect x="391" y="401.5125" width="196" height="36" rx="3" class="c-mask"/>
+          <text x="489" y="427.5125" class="t-edge-emphasis" font-size="28" text-anchor="middle">route task</text>
+        </g>
+        <g data-detail="context" data-edge-from="router" data-edge-to="catalog" data-edge-label="rg search" data-edge-key="2" data-edge-id="search_catalog">
+          <rect x="821" y="239.25" width="178" height="36" rx="3" class="c-mask"/>
+          <text x="910" y="265.25" class="t-edge-emphasis" font-size="28" text-anchor="middle">rg search</text>
+        </g>
+        <g data-detail="context" data-edge-from="catalog" data-edge-to="sources" data-edge-label="recorded path + ref" data-edge-key="3" data-edge-id="resolve_source">
+          <rect x="831" y="312" width="358" height="36" rx="3" class="c-mask"/>
+          <text x="1010" y="338" class="t-edge-default" font-size="28" text-anchor="middle">recorded path + ref</text>
+        </g>
+        <g data-detail="context" data-edge-from="sources" data-edge-to="router" data-edge-label="inspect SKILL.md" data-edge-key="4" data-edge-id="inspect_source">
+          <rect x="521.5" y="472" width="304" height="36" rx="3" class="c-mask"/>
+          <text x="673.5" y="498" class="t-edge-security" font-size="28" text-anchor="middle">inspect SKILL.md</text>
+        </g>
+
+        <!-- Boundary labels (foreground masks keep routes out of titles) -->
+
+
+        <!-- Legend -->
+
+
+</g>
+</svg>
